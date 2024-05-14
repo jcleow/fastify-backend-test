@@ -4,7 +4,7 @@ import { loginController } from "../controllers/login.controllers";
 
 async function loginUser(fastify: FastifyInstance){
   fastify.post(
-      '/',
+      '/login',
       loginUserSchema,
       loginController
     )
