@@ -2,7 +2,7 @@ import Fastify from 'fastify'
 import pino from 'pino'
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 import loginRouter from './routes/login.routes'
-import {getUserById, getUser} from './routes/user.routes'
+import {getUserById, getUser, createUser} from './routes/user.routes'
 
 const port = 8080
 
@@ -17,6 +17,7 @@ const startServer = async () => {
     await server.register(loginRouter, {prefix: API_V1})
     await server.register(getUserById, {prefix: API_V1})
     await server.register(getUser, {prefix: API_V1})
+    await server.register(createUser, {prefix: API_V1})
 
 
     await server.listen({port: port})

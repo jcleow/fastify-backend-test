@@ -1,6 +1,7 @@
 import {FastifyReply, FastifyRequest} from "fastify"
-import { UserType } from "../models/User";
-import { findUserById, findUser } from "../store/repositories/user.repository";
+import {  User, UserType } from "../models/User";
+import { findUserById, findUser, createUser } from "../store/repositories/user.repository";
+const shortuuid = require('short-uuid')
 
 interface IFindUserByIdParams {
     id: string
@@ -33,6 +34,25 @@ export const findUserController = async (
       const {id, username, email} = request.query
       const res = await findUser({id, username, email})
       reply.status(201).send(res)
+    } catch(e){
+        reply.status(500).send(e)
+    }
+}
+
+export const createUserController = async (
+    request: FastifyRequest<{Body: UserType}>,
+    reply: FastifyReply
+) => {
+    try {
+        const {username, email} = request.body
+        const res = await createUser({
+            id: shortuuid.generate(),
+            username: username,
+            email:email
+        })
+
+        console.log(res,'res')
+        reply.status(201).send(res)
     } catch(e){
         reply.status(500).send(e)
     }

@@ -4,6 +4,6 @@ export const loginController = async (
     request: FastifyRequest<{Body: UserType}>,
     reply: FastifyReply
 ) => {
-    const { name, email } = request.body;
-    reply.status(200).send({ name, email });
+    const { username, email } = request.body;
+    reply.status(200).send({ username, email });
   }

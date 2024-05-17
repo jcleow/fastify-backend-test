@@ -40,9 +40,9 @@ export async function updatePerson(id: string, updateWith: UserUpdate) {
   await db.updateTable(TB_USER).set(updateWith).where('id', '=', id).execute()
 }
 
-export async function createPerson(person: NewUser) {
+export async function createUser(user: NewUser) {
   const { insertId } = await db.insertInto(TB_USER)
-    .values(person)
+    .values(user)
     .executeTakeFirstOrThrow()
 
   return await findUserById(String(insertId!))
