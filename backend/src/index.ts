@@ -13,8 +13,8 @@ const API_V1 = '/api/v1'
 const swaggerOptions = {
   swagger: {
       info: {
-          title: "My Title",
-          description: "My Description.",
+          title: "Sales Inventory Dashboard APIs",
+          description: "",
           version: "1.0.0",
       },
       host: "localhost",
@@ -52,7 +52,5 @@ const startServer = async () => {
     console.error(e)
   }
 }
-
-
 
 startServer()
