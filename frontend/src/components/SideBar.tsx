@@ -1,9 +1,9 @@
-import { useState, useRef } from "react";
-import { Sidebar } from "primereact/sidebar";
-import { Button } from "primereact/button";
-import { StyleClass } from "primereact/styleclass";
-import { Ripple } from "primereact/ripple";
+import { PanelMenu } from "primereact/panelmenu";
+import styles from "../stylesheets/Sidebar.module.css";
+import classNames from "classnames/bind";
 import "../stylesheets/primeReactStyles.ts";
+
+const cx = classNames.bind(styles);
 
 function SomeLogo() {
     return (
@@ -75,153 +75,85 @@ function SomeLogo() {
     );
 }
 
-interface DropDownMenuProps {
-    name: string;
-    btnRef: any;
-    href: string;
-    isDropDown?: boolean;
-}
-function DropDownMenu({
-    name,
-    btnRef,
-    href,
-    isDropDown = false,
-}: DropDownMenuProps) {
-    return (
-        <StyleClass
-            nodeRef={btnRef}
-            selector="@next"
-            enterFromClassName="hidden"
-            enterActiveClassName="slidedown"
-            leaveToClassName="hidden"
-            leaveActiveClassName="slideup"
-        >
-            <a
-                ref={btnRef}
-                className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
-            >
-                {isDropDown && <i className="pi pi-chart-line mr-2"></i>}
-                <span className="font-medium">{name}</span>
-                {isDropDown && (
-                    <i className="pi pi-chevron-down ml-auto mr-1"></i>
-                )}
-                <Ripple />
-            </a>
-        </StyleClass>
-    );
-}
+export default function NewSideBar() {
+    const items = [
+        {
+            key: "my-business",
+            label: "My business",
+            icon: "pi pi-file",
+            items: [
+                {
+                    label: "Client Management",
+                    icon: "pi pi-file",
+                },
+            ],
+        },
+        {
+            key: "dpp-deals",
+            label: "DPP Deals",
+            icon: "pi pi-cloud",
+            items: [
+                {
+                    label: "Bundle Management",
+                    icon: "pi pi-cloud-upload",
+                },
+                {
+                    label: "Campaign Management",
+                    icon: "pi pi-cloud-download",
+                },
+            ],
+        },
+        {
+            key: "inventory",
+            label: "Inventory",
+            icon: "pi pi-desktop",
+            items: [
+                {
+                    label: "Task Management",
+                    icon: "pi pi-mobile",
+                },
+                {
+                    label: "Filler Management",
+                    icon: "pi pi-desktop",
+                },
+                {
+                    label: "Calendar",
+                    icon: "pi pi-tablet",
+                },
+            ],
+        },
+        {
+            key: "calendar",
+            label: "Calendar",
+            icon: "pi pi-desktop",
+            items: [
+                {
+                    label: "Bundle Management",
+                    icon: "pi pi-mobile",
+                },
+                {
+                    label: "Inventory Summary",
+                    icon: "pi pi-desktop",
+                },
+                {
+                    label: "Bookings",
+                    icon: "pi pi-tablet",
+                },
+            ],
+        },
+    ];
 
-export default function SideBar() {
-    const [visible, setVisible] = useState<boolean>(true);
-    const myBusinessRef = useRef<any>(null);
-    const clientManagementRef = useRef<any>(null);
-    const dppDealsRef = useRef<any>(null);
-    const bundleManagementRef = useRef<any>(null);
-    const campaignManagementRef = useRef<any>(null);
-    const inventoryRef = useRef<any>(null);
-    const taskManagementRef = useRef<any>(null);
-    const fillerManagementRef = useRef<any>(null);
-    const calendarRef = useRef<any>(null);
+    const allKeyStates: Record<string, boolean> = {};
+    items.forEach((item) => (allKeyStates[item.key] = true));
 
     return (
-        <div className="flex justify-content-left">
-            <Sidebar
-                visible={visible}
-                onHide={() => setVisible(false)}
-                content={({ closeIconRef, hide }) => (
-                    <div>
-                        <div className="flex justify-content-between">
-                            <SomeLogo />
-                            <span>
-                                <Button
-                                    type="button"
-                                    ref={closeIconRef}
-                                    onClick={(e) => hide(e)}
-                                    icon="pi pi-times"
-                                    className="h-2rem w-2rem bg-white text-500 border-transparent"
-                                />
-                            </span>
-                        </div>
-                        <div>
-                            <ul className="list-none">
-                                <li>
-                                    <DropDownMenu
-                                        name="My Business"
-                                        btnRef={myBusinessRef}
-                                        href="/"
-                                        isDropDown={true}
-                                    />
-                                    <ul className="hidden list-none">
-                                        <li>
-                                            <DropDownMenu
-                                                name="Client Management"
-                                                btnRef={clientManagementRef}
-                                                href="/"
-                                            />
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <DropDownMenu
-                                        name="DPP Deals"
-                                        btnRef={dppDealsRef}
-                                        href="/"
-                                        isDropDown={true}
-                                    />
-                                    <ul className="hidden list-none">
-                                        <li>
-                                            <DropDownMenu
-                                                name="Bundle Management"
-                                                btnRef={bundleManagementRef}
-                                                href="/"
-                                            />
-                                        </li>
-                                        <li>
-                                            <DropDownMenu
-                                                name="Campaign Management"
-                                                btnRef={campaignManagementRef}
-                                                href="/"
-                                            />
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <DropDownMenu
-                                        name="Inventory"
-                                        btnRef={inventoryRef}
-                                        href="/"
-                                        isDropDown={true}
-                                    />
-                                    <ul className="hidden list-none">
-                                        <li>
-                                            <DropDownMenu
-                                                name="Task Management"
-                                                btnRef={taskManagementRef}
-                                                href="/"
-                                            />
-                                        </li>
-                                        <li>
-                                            <DropDownMenu
-                                                name="Filler Management"
-                                                btnRef={fillerManagementRef}
-                                                href="/"
-                                            />
-                                        </li>
-                                        <li>
-                                            <DropDownMenu
-                                                name="Calendar"
-                                                btnRef={calendarRef}
-                                                href="/"
-                                            />
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                )}
-            ></Sidebar>
-            <Button icon="pi pi-bars" onClick={() => setVisible(true)} />
+        <div className={cx("container")}>
+            <SomeLogo />
+            <PanelMenu
+                model={items}
+                className="w-full md:w-20em my-7"
+                expandedKeys={allKeyStates}
+            />
         </div>
     );
 }

@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { PrimeReactProvider } from "primereact/api";
+import SideBar from "./components/SideBar";
+import { Outlet } from "react-router-dom";
+import styles from "./stylesheets/App.module.css";
+import classNames from "classnames/bind";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const cx = classNames.bind(styles);
+export default function Root() {
+    const value = {
+        ripple: true,
+    };
+    return (
+        <PrimeReactProvider value={value}>
+            <div className={cx("container")}>
+                <div className={cx("sidebar")}>
+                    <SideBar />
+                </div>
+                <div className={cx("main-display")}>
+                    <Outlet />
+                </div>
+            </div>
+        </PrimeReactProvider>
+    );
 }
-
-export default App

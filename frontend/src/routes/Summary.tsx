@@ -1,4 +1,4 @@
-import { SummaryCard } from "./SummaryCard";
+import { SummaryCard } from "../components/SummaryCard.tsx";
 import summaryStyles from "../stylesheets/Summary.module.css";
 import homeStyles from "../stylesheets/Home.module.css";
 import "../stylesheets/primeReactStyles.ts";
@@ -7,21 +7,6 @@ import { Chart } from "primereact/chart";
 
 const cx = classNames.bind(summaryStyles);
 const cxHome = classNames.bind(homeStyles);
-
-// const chartData = {
-//     labels: ["Central", "Southeast", "Southwest", "Northeast", "Northwest"],
-//     data: [65, 59, 80, 81, 56],
-// };
-
-// const chartOptions = {
-//     options: {
-//         scales: {
-//             y: {
-//                 beginAtZero: true,
-//             },
-//         },
-//     },
-// };
 
 const chartData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -50,7 +35,7 @@ const chartOptions = {
     },
 };
 
-export default function Home() {
+export default function Summary() {
     return (
         <>
             <div className={cxHome("top-summary-view")}>
