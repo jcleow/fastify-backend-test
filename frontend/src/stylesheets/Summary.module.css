@@ -1,0 +1,26 @@
+.summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    max-width: 1000px;
+}
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    height: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.summary-card__stats {
+    align-self: end;
+}
+.summary-card__icon {
+    align-self: center;
+}
+.summary-card__subscript-container {
+    display: flex;
+    justify-content: space-between;
+}

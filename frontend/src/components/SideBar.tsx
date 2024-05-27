@@ -1,19 +1,20 @@
-import { useState, useRef } from 'react';
-import { Sidebar } from 'primereact/sidebar';
-import { Button } from 'primereact/button';
-import { StyleClass } from 'primereact/styleclass';
-import { Ripple } from 'primereact/ripple';
+import { useState, useRef } from "react";
+import { Sidebar } from "primereact/sidebar";
+import { Button } from "primereact/button";
+import { StyleClass } from "primereact/styleclass";
+import { Ripple } from "primereact/ripple";
+import "../stylesheets/primeReactStyles.ts";
 
-import './primeReactStyles.ts';
-import 'primeflex/primeflex.css';
-import 'primeicons/primeicons.css';
-
-
-
-function SomeLogo(){
-    return(
+function SomeLogo() {
+    return (
         <span className="inline-flex align-items-center gap-2">
-            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+                width="35"
+                height="35"
+                viewBox="0 0 35 35"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
                 <g mask="url(#mask0_2642_713)">
                     <path
                         fillRule="evenodd"
@@ -22,32 +23,72 @@ function SomeLogo(){
                         fill="var(--primary-color)"
                     />
                 </g>
-                <path d="M22.0969 18.6465L20.3461 18.2616L21.7078 20.1862V26.1522L26.0214 22.3031L26.3764 15.7598L24.2367 16.5296L22.0969 18.6465Z" fill="var(--primary-color)" />
-                <path d="M11.2035 18.6465L12.9543 18.2616L11.5926 20.1862V26.1522L7.27906 22.3031L6.92397 15.7598L9.06376 16.5296L11.2035 18.6465Z" fill="var(--primary-color)" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M12.1761 20.5713L13.7323 18.2618L14.7049 18.8392H18.5955L19.5681 18.2618L21.1243 20.5713V29.2316L19.3056 32.6659H13.6397L12.1761 29.2316V20.5713Z" fill="var(--primary-color)" />
-                <path d="M21.7079 29.8089L24.2367 27.3071V24.8052L21.7079 26.9221V29.8089Z" fill="var(--primary-color)" />
-                <path d="M11.5927 29.8089L9.06387 27.3071V24.8052L11.5927 26.9221V29.8089Z" fill="var(--primary-color)" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M16.2613 7.09967H14.1215L12.5652 10.7563L15.0941 18.0694H18.401L20.7353 10.7563L19.1791 7.09967H17.0394V18.0694H16.2613V7.09967Z" fill="var(--primary-color)" />
-                <path d="M15.0942 18.0694L6.7296 14.9901L5.56244 10.1788L12.7599 10.7562L15.2887 18.0694H15.0942Z" fill="var(--primary-color)" />
-                <path d="M18.4011 18.0694L26.7658 14.9901L27.9329 10.1788L20.5409 10.7562L18.2066 18.0694H18.4011Z" fill="var(--primary-color)" />
-                <path d="M21.1245 10.1789L24.8545 9.794L22.4862 7.09967H19.7628L21.1245 10.1789Z" fill="var(--primary-color)" />
-                <path d="M12.1762 10.1789L8.4462 9.794L10.8145 7.09967H13.5378L12.1762 10.1789Z" fill="var(--primary-color)" />
+                <path
+                    d="M22.0969 18.6465L20.3461 18.2616L21.7078 20.1862V26.1522L26.0214 22.3031L26.3764 15.7598L24.2367 16.5296L22.0969 18.6465Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    d="M11.2035 18.6465L12.9543 18.2616L11.5926 20.1862V26.1522L7.27906 22.3031L6.92397 15.7598L9.06376 16.5296L11.2035 18.6465Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M12.1761 20.5713L13.7323 18.2618L14.7049 18.8392H18.5955L19.5681 18.2618L21.1243 20.5713V29.2316L19.3056 32.6659H13.6397L12.1761 29.2316V20.5713Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    d="M21.7079 29.8089L24.2367 27.3071V24.8052L21.7079 26.9221V29.8089Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    d="M11.5927 29.8089L9.06387 27.3071V24.8052L11.5927 26.9221V29.8089Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M16.2613 7.09967H14.1215L12.5652 10.7563L15.0941 18.0694H18.401L20.7353 10.7563L19.1791 7.09967H17.0394V18.0694H16.2613V7.09967Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    d="M15.0942 18.0694L6.7296 14.9901L5.56244 10.1788L12.7599 10.7562L15.2887 18.0694H15.0942Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    d="M18.4011 18.0694L26.7658 14.9901L27.9329 10.1788L20.5409 10.7562L18.2066 18.0694H18.4011Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    d="M21.1245 10.1789L24.8545 9.794L22.4862 7.09967H19.7628L21.1245 10.1789Z"
+                    fill="var(--primary-color)"
+                />
+                <path
+                    d="M12.1762 10.1789L8.4462 9.794L10.8145 7.09967H13.5378L12.1762 10.1789Z"
+                    fill="var(--primary-color)"
+                />
             </svg>
-            <span className="font-semibold text-2xl text-primary">Your Logo</span>
+            <span className="font-semibold text-2xl text-primary">
+                Your Logo
+            </span>
         </span>
-    )
+    );
 }
-
 
 interface DropDownMenuProps {
     name: string;
     btnRef: any;
     href: string;
-    isDropDown?: boolean
+    isDropDown?: boolean;
 }
-function DropDownMenu({name, btnRef, href, isDropDown = false}: DropDownMenuProps) {
+function DropDownMenu({
+    name,
+    btnRef,
+    href,
+    isDropDown = false,
+}: DropDownMenuProps) {
     return (
-        <StyleClass 
+        <StyleClass
             nodeRef={btnRef}
             selector="@next"
             enterFromClassName="hidden"
@@ -55,125 +96,132 @@ function DropDownMenu({name, btnRef, href, isDropDown = false}: DropDownMenuProp
             leaveToClassName="hidden"
             leaveActiveClassName="slideup"
         >
-        <a ref={btnRef} className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full">
-            {isDropDown && <i className="pi pi-chart-line mr-2"></i>}
+            <a
+                ref={btnRef}
+                className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
+            >
+                {isDropDown && <i className="pi pi-chart-line mr-2"></i>}
                 <span className="font-medium">{name}</span>
-            {isDropDown && <i className="pi pi-chevron-down ml-auto mr-1"></i>}
-            <Ripple />
-        </a>
+                {isDropDown && (
+                    <i className="pi pi-chevron-down ml-auto mr-1"></i>
+                )}
+                <Ripple />
+            </a>
         </StyleClass>
-    )
+    );
 }
 
 export default function SideBar() {
-    const [visible, setVisible] = useState<boolean>(false);
-    const myBusinessRef = useRef<any>(null)
-    const clientManagementRef = useRef<any>(null)
-    const dppDealsRef = useRef<any>(null)
-    const bundleManagementRef = useRef<any>(null)
-    const campaignManagementRef = useRef<any>(null)
-    const inventoryRef = useRef<any>(null)
-    const taskManagementRef = useRef<any>(null)
-    const fillerManagementRef = useRef<any>(null)
-    const calendarRef = useRef<any>(null)
-
+    const [visible, setVisible] = useState<boolean>(true);
+    const myBusinessRef = useRef<any>(null);
+    const clientManagementRef = useRef<any>(null);
+    const dppDealsRef = useRef<any>(null);
+    const bundleManagementRef = useRef<any>(null);
+    const campaignManagementRef = useRef<any>(null);
+    const inventoryRef = useRef<any>(null);
+    const taskManagementRef = useRef<any>(null);
+    const fillerManagementRef = useRef<any>(null);
+    const calendarRef = useRef<any>(null);
 
     return (
         <div className="flex justify-content-left">
             <Sidebar
                 visible={visible}
                 onHide={() => setVisible(false)}
-                content={({closeIconRef, hide}) => (
+                content={({ closeIconRef, hide }) => (
                     <div>
-                        <div className='flex justify-content-between'>
-                            <SomeLogo/>
+                        <div className="flex justify-content-between">
+                            <SomeLogo />
                             <span>
-                                <Button type="button" ref={closeIconRef} onClick={(e) => hide(e)} icon="pi pi-times" className="h-2rem w-2rem bg-white text-500 border-transparent"/>
+                                <Button
+                                    type="button"
+                                    ref={closeIconRef}
+                                    onClick={(e) => hide(e)}
+                                    icon="pi pi-times"
+                                    className="h-2rem w-2rem bg-white text-500 border-transparent"
+                                />
                             </span>
                         </div>
                         <div>
-                            <ul className='list-none'>
+                            <ul className="list-none">
                                 <li>
                                     <DropDownMenu
-                                        name='My Business'
-                                        btnRef={myBusinessRef} 
-                                        href='/'
+                                        name="My Business"
+                                        btnRef={myBusinessRef}
+                                        href="/"
                                         isDropDown={true}
                                     />
-                                    <ul className='hidden list-none'>
+                                    <ul className="hidden list-none">
                                         <li>
                                             <DropDownMenu
-                                                name='Client Management'
+                                                name="Client Management"
                                                 btnRef={clientManagementRef}
-                                                href='/'
+                                                href="/"
                                             />
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
                                     <DropDownMenu
-                                        name='DPP Deals'
+                                        name="DPP Deals"
                                         btnRef={dppDealsRef}
-                                        href='/'
+                                        href="/"
                                         isDropDown={true}
                                     />
-                                    <ul className='hidden list-none'>
+                                    <ul className="hidden list-none">
                                         <li>
                                             <DropDownMenu
-                                                name='Bundle Management'
+                                                name="Bundle Management"
                                                 btnRef={bundleManagementRef}
-                                                href='/'
+                                                href="/"
                                             />
                                         </li>
                                         <li>
                                             <DropDownMenu
-                                                name='Campaign Management'
+                                                name="Campaign Management"
                                                 btnRef={campaignManagementRef}
-                                                href='/'
+                                                href="/"
                                             />
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
                                     <DropDownMenu
-                                        name='Inventory'
+                                        name="Inventory"
                                         btnRef={inventoryRef}
-                                        href='/'
+                                        href="/"
                                         isDropDown={true}
                                     />
-                                    <ul className='hidden list-none'>
+                                    <ul className="hidden list-none">
                                         <li>
                                             <DropDownMenu
-                                                name='Task Management'
+                                                name="Task Management"
                                                 btnRef={taskManagementRef}
-                                                href='/'
+                                                href="/"
                                             />
                                         </li>
                                         <li>
                                             <DropDownMenu
-                                                name='Filler Management'
+                                                name="Filler Management"
                                                 btnRef={fillerManagementRef}
-                                                href='/'
+                                                href="/"
                                             />
                                         </li>
                                         <li>
                                             <DropDownMenu
-                                                name='Calendar'
+                                                name="Calendar"
                                                 btnRef={calendarRef}
-                                                href='/'
+                                                href="/"
                                             />
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
-            )}
-            >
-            </Sidebar>
+                )}
+            ></Sidebar>
             <Button icon="pi pi-bars" onClick={() => setVisible(true)} />
         </div>
-    )
+    );
 }
-        
