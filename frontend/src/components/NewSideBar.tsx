@@ -151,7 +151,7 @@ export default function NewSideBar() {
             <SomeLogo />
             <PanelMenu
                 model={items}
-                className="w-full md:w-29rem my-7"
+                className="w-full md:w-20em my-7"
                 expandedKeys={allKeyStates}
             />
         </div>

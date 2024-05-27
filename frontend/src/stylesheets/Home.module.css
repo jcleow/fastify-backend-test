@@ -3,3 +3,11 @@
     margin: 10px;
     justify-content: center;
 }
+.chart-summary-view {
+    display: flex;
+    justify-content: center;
+}
+.chart {
+    width: 1000px;
+    height: 1000px;
+}
