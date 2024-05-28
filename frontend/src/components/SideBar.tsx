@@ -91,13 +91,6 @@ export default function SideBar() {
                         navigate("/client_management");
                     },
                 },
-                {
-                    label: "Client Management",
-                    icon: "pi pi-file",
-                    command: () => {
-                        navigate("/client_management_2");
-                    },
-                },
             ],
         },
         {
