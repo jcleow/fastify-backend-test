@@ -1,0 +1,12 @@
+.container {
+    border: solid grey;
+    height: 100vh;
+    width: 250px;
+    background-color: white;
+}
+
+@media screen and (max-width: 1300px) {
+    .container {
+        display: none;
+    }
+}

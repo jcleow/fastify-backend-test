@@ -1,0 +1,16 @@
+.top-summary-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+}
+
+.chart-summary-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.chart {
+    width: 1000px;
+    height: 1000px;
+}
