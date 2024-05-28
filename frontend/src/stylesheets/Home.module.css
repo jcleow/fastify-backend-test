@@ -1,10 +1,13 @@
 .top-summary-view {
     display: flex;
-    margin: 10px;
+    flex-direction: row;
     justify-content: center;
+    margin: 10px;
 }
+
 .chart-summary-view {
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 .chart {

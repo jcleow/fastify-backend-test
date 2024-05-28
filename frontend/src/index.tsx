@@ -8,6 +8,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import Summary from "./routes/Summary";
+import ClientManagement from "./routes/ClientManagement";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: "summary",
                 element: <Summary />,
+            },
+            {
+                path: "client_management",
+                element: <ClientManagement />,
             },
         ],
     },
