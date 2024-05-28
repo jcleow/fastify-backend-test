@@ -1,4 +1,5 @@
 import { PanelMenu } from "primereact/panelmenu";
+import { useNavigate } from "react-router-dom";
 import styles from "../stylesheets/Sidebar.module.css";
 import classNames from "classnames/bind";
 import "../stylesheets/primeReactStyles.ts";
@@ -75,7 +76,8 @@ function SomeLogo() {
     );
 }
 
-export default function NewSideBar() {
+export default function SideBar() {
+    let navigate = useNavigate();
     const items = [
         {
             key: "my-business",
@@ -85,6 +87,9 @@ export default function NewSideBar() {
                 {
                     label: "Client Management",
                     icon: "pi pi-file",
+                    command: () => {
+                        navigate("/client_management");
+                    },
                 },
             ],
         },

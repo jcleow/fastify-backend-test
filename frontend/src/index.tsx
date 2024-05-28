@@ -8,7 +8,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import Summary from "./routes/Summary";
-import ClientManagement from "./routes/ClientManagement";
+import ClientManagement from "./routes/ClientManagement/index";
 const router = createBrowserRouter([
     {
         path: "/",
