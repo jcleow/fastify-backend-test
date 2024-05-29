@@ -95,9 +95,9 @@ export default function CreateClientModal({
         reset,
     } = useForm({ defaultValues });
 
-    const onSubmit = (data: any) => {
-        setFormData(data);
-        setShowMessage(true);
+    const onSubmit = () => {
+        // setFormData(data);
+        // setShowMessage(true);
 
         reset();
     };

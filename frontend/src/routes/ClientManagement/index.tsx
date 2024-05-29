@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { DataTable } from "primereact/datatable";
-import { Fieldset } from "primereact/fieldset";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import CreateClientModal from "./CreateClientModal";
@@ -8,7 +7,6 @@ import { CreateClientModalProps } from "./CreateClientModalTypes";
 
 // Client Types
 const DIRECT = "Direct";
-const AGENCY = "Agency";
 
 interface Client {
     companyName: string;
@@ -48,9 +46,9 @@ function Header(props: CreateClientModalProps) {
 }
 
 export default function ClientManagement() {
-    const [clients, setClients] = useState<Client[]>([]);
+    const [clients, _] = useState<Client[]>([]);
     const [visible, setVisible] = useState<boolean>(false);
-    const [clientType, setClientType] = useState<string>("Direct");
+    const [clientType, setClientType] = useState<string>(DIRECT);
 
     const headerModalProps = {
         visible,
