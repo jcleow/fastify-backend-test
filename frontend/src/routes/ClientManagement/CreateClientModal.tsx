@@ -64,6 +64,7 @@ function CustomInput({ control, errors, label, fieldName }: CustomInputProps) {
         <div
             className={classNames({
                 field: true,
+                "text-xs": true,
             })}
         >
             <span className="p-float-label">
@@ -113,7 +114,7 @@ function CustomDropDown({
     fieldName,
 }: CustomDropDownProps) {
     return (
-        <div className="field">
+        <div className="field text-xs">
             <span className="p-float-label">
                 <Controller
                     name={label}
@@ -213,13 +214,12 @@ export default function CreateClientModal({
                 >
                     <div
                         // To change to a class: note primeflex doesnt support grids which is super annoying
-                        className=""
                         style={{
                             display: "grid",
-                            gridTemplateColumns: "3fr 1fr 1fr",
+                            gridTemplateColumns: "3fr 1fr 2fr",
                         }}
                     >
-                        <div className="">
+                        <div>
                             <CustomInput
                                 control={control}
                                 errors={errors}
@@ -228,7 +228,7 @@ export default function CreateClientModal({
                             />
                         </div>
                         <div></div>
-                        <div className="">
+                        <div>
                             <CustomInput
                                 control={control}
                                 errors={errors}
@@ -251,6 +251,43 @@ export default function CreateClientModal({
                             options={industrySectorOptions}
                             label="Industry Sector"
                             fieldName="industrySector"
+                        />
+                    </div>
+                </Fieldset>
+                <Fieldset
+                    legend={FieldSetLabel("Contact Details")}
+                    unstyled={true}
+                >
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "3fr 1fr 2fr",
+                        }}
+                    >
+                        <div>
+                            <CustomInput
+                                control={control}
+                                errors={errors}
+                                label="Contact Person"
+                                fieldName="contactPerson"
+                            />
+                        </div>
+                        <div></div>
+                        <div>
+                            <CustomInput
+                                control={control}
+                                errors={errors}
+                                label="Contact Number"
+                                fieldName="contactNumber"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <CustomInput
+                            control={control}
+                            errors={errors}
+                            label="Email"
+                            fieldName="email"
                         />
                     </div>
                 </Fieldset>
