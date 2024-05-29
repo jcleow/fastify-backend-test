@@ -22,13 +22,14 @@ interface ClientTypeProps {
 function SelectClientType({ clientType, setClientType }: ClientTypeProps) {
     return (
         <div className="flex justify-content mb-3">
-            <div className="flex align-items-center">
+            <div className="flex align-items-center mr-3">
                 <RadioButton
                     inputId="direct_client_type"
                     name="direct"
                     value="Direct"
                     onChange={(e) => setClientType(e.value)}
                     checked={clientType === "Direct"}
+                    unstyled={true}
                 />
                 <label htmlFor="direct" className="ml-2">
                     Direct
@@ -41,6 +42,7 @@ function SelectClientType({ clientType, setClientType }: ClientTypeProps) {
                     value="Agency"
                     onChange={(e) => setClientType(e.value)}
                     checked={clientType === "Agency"}
+                    unstyled={true}
                 />
                 <label htmlFor="agency" className="ml-2">
                     Agency
@@ -59,7 +61,11 @@ interface CustomInputProps {
 
 function CustomInput({ control, errors, label, fieldName }: CustomInputProps) {
     return (
-        <div className="field">
+        <div
+            className={classNames({
+                field: true,
+            })}
+        >
             <span className="p-float-label">
                 <Controller
                     name={fieldName}
@@ -72,9 +78,6 @@ function CustomInput({ control, errors, label, fieldName }: CustomInputProps) {
                             autoFocus
                             className={classNames({
                                 "p-invalid": fieldState.invalid,
-                                "col-8": fieldName === "companyName",
-                                "col-4": fieldName === "uen",
-                                "col-12": fieldName === "address",
                             })}
                         />
                     )}
@@ -203,26 +206,38 @@ export default function CreateClientModal({
                 clientType={clientType}
                 setClientType={setClientType}
             />
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
                 <Fieldset
                     legend={FieldSetLabel("Company Name")}
                     unstyled={true}
                 >
-                    <div className="flex">
-                        <CustomInput
-                            control={control}
-                            errors={errors}
-                            label="Company Name"
-                            fieldName="companyName"
-                        />
-                        <CustomInput
-                            control={control}
-                            errors={errors}
-                            label="UEN"
-                            fieldName="uen"
-                        />
+                    <div
+                        // To change to a class: note primeflex doesnt support grids which is super annoying
+                        className=""
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "3fr 1fr 1fr",
+                        }}
+                    >
+                        <div className="">
+                            <CustomInput
+                                control={control}
+                                errors={errors}
+                                label="Company Name"
+                                fieldName="companyName"
+                            />
+                        </div>
+                        <div></div>
+                        <div className="">
+                            <CustomInput
+                                control={control}
+                                errors={errors}
+                                label="UEN"
+                                fieldName="uen"
+                            />
+                        </div>
                     </div>
-                    <div>
+                    <div className="mt-2">
                         <CustomInput
                             control={control}
                             errors={errors}
@@ -230,7 +245,7 @@ export default function CreateClientModal({
                             fieldName="address"
                         />
                     </div>
-                    <div>
+                    <div className="mt-4">
                         <CustomDropDown
                             control={control}
                             options={industrySectorOptions}
