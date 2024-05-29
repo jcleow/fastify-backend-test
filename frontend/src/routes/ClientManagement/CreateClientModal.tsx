@@ -1,18 +1,13 @@
-import { CreateClientModalProps } from "../../types/CreateClientModalTypes";
-import React, { useEffect, useState } from "react";
-import { useForm, Controller, Control, FieldErrors } from "react-hook-form";
-import { InputText } from "primereact/inputtext";
+import { CreateClientModalProps } from "./CreateClientModalTypes";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Fieldset } from "primereact/fieldset";
-import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown";
-import { Calendar } from "primereact/calendar";
-import { Password } from "primereact/password";
-import { Checkbox } from "primereact/checkbox";
 import { Dialog } from "primereact/dialog";
-import { Divider } from "primereact/divider";
-import { classNames } from "primereact/utils";
-// import { CountryService } from "../service/CountryService";
 import { RadioButton } from "primereact/radiobutton";
+import CustomInput from "../../components/CustomInput/CustomInput";
+import CustomDropDown, {
+    LabelValuePair,
+} from "../../components/CustomDropDown/CustomDropDown";
 
 interface ClientTypeProps {
     clientType: string;
@@ -52,92 +47,6 @@ function SelectClientType({ clientType, setClientType }: ClientTypeProps) {
     );
 }
 
-interface CustomInputProps {
-    control: Control<any>;
-    errors: FieldErrors<any>;
-    label: string;
-    fieldName: string;
-}
-
-function CustomInput({ control, errors, label, fieldName }: CustomInputProps) {
-    return (
-        <div
-            className={classNames({
-                field: true,
-            })}
-        >
-            <span className="p-float-label">
-                <Controller
-                    name={fieldName}
-                    control={control}
-                    rules={{ required: `${label} is required.` }}
-                    render={({ field, fieldState }) => (
-                        <InputText
-                            id={field.name}
-                            {...field}
-                            autoFocus
-                            className={classNames({
-                                "p-invalid": fieldState.invalid,
-                            })}
-                        />
-                    )}
-                />
-                <label
-                    htmlFor={fieldName}
-                    className={classNames({
-                        "p-error": errors.companyName,
-                    })}
-                >
-                    {`${label}*`}
-                </label>
-            </span>
-        </div>
-    );
-}
-
-interface LabelValuePair {
-    label: string;
-    value: string;
-}
-
-interface CustomDropDownProps {
-    control: Control<any>;
-    label: string;
-    fieldName: string;
-    options: LabelValuePair[];
-}
-function CustomDropDown({
-    control,
-    label,
-    options,
-    fieldName,
-}: CustomDropDownProps) {
-    return (
-        <div className="field">
-            <span className="p-float-label">
-                <Controller
-                    name={label}
-                    control={control}
-                    render={({ field }) => (
-                        <Dropdown
-                            id={field.name}
-                            value={field.value}
-                            onChange={(e) => field.onChange(e.value)}
-                            options={options}
-                            optionLabel="label"
-                            optionValue="value"
-                            className={classNames({
-                                "col-12": fieldName === "industrySector",
-                            })}
-                        />
-                    )}
-                />
-                <label htmlFor={label}>{label}</label>
-            </span>
-        </div>
-    );
-}
-
 function FieldSetLabel(label: string) {
     return <div className="bg-white m-3">{label}</div>;
 }
@@ -148,8 +57,9 @@ export default function CreateClientModal({
     setClientType,
     clientType,
 }: CreateClientModalProps) {
-    const [showMessage, setShowMessage] = useState(false);
-    const [formData, setFormData] = useState({});
+    //Todo: integrate with backend logic
+    // const [showMessage, setShowMessage] = useState(false);
+    // const [formData, setFormData] = useState({});
     const [industrySectorOptions, setIndustrySectorOptions] = useState<
         LabelValuePair[]
     >([]);
@@ -185,9 +95,9 @@ export default function CreateClientModal({
         reset,
     } = useForm({ defaultValues });
 
-    const onSubmit = (data: any) => {
-        setFormData(data);
-        setShowMessage(true);
+    const onSubmit = () => {
+        // setFormData(data);
+        // setShowMessage(true);
 
         reset();
     };
@@ -213,13 +123,12 @@ export default function CreateClientModal({
                 >
                     <div
                         // To change to a class: note primeflex doesnt support grids which is super annoying
-                        className=""
                         style={{
                             display: "grid",
-                            gridTemplateColumns: "3fr 1fr 1fr",
+                            gridTemplateColumns: "3fr 1fr 2fr",
                         }}
                     >
-                        <div className="">
+                        <div>
                             <CustomInput
                                 control={control}
                                 errors={errors}
@@ -228,7 +137,7 @@ export default function CreateClientModal({
                             />
                         </div>
                         <div></div>
-                        <div className="">
+                        <div>
                             <CustomInput
                                 control={control}
                                 errors={errors}
@@ -251,6 +160,43 @@ export default function CreateClientModal({
                             options={industrySectorOptions}
                             label="Industry Sector"
                             fieldName="industrySector"
+                        />
+                    </div>
+                </Fieldset>
+                <Fieldset
+                    legend={FieldSetLabel("Contact Details")}
+                    unstyled={true}
+                >
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "3fr 1fr 2fr",
+                        }}
+                    >
+                        <div>
+                            <CustomInput
+                                control={control}
+                                errors={errors}
+                                label="Contact Person"
+                                fieldName="contactPerson"
+                            />
+                        </div>
+                        <div></div>
+                        <div>
+                            <CustomInput
+                                control={control}
+                                errors={errors}
+                                label="Contact Number"
+                                fieldName="contactNumber"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <CustomInput
+                            control={control}
+                            errors={errors}
+                            label="Email"
+                            fieldName="email"
                         />
                     </div>
                 </Fieldset>

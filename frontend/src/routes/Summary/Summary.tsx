@@ -1,13 +1,10 @@
-import { SummaryCard } from "../components/SummaryCard.tsx";
-import summaryStyles from "../stylesheets/Summary.module.css";
-import homeStyles from "../stylesheets/Home.module.css";
-import "../stylesheets/primeReactStyles.ts";
+import { SummaryCard } from "../../components/SummaryCard/SummaryCard.tsx";
+import styles from "./Summary.module.css";
+import "../../assets/primeReactStyles.ts";
 import classNames from "classnames/bind";
 import { Chart } from "primereact/chart";
 
-const cx = classNames.bind(summaryStyles);
-const cxHome = classNames.bind(homeStyles);
-
+const cx = classNames.bind(styles);
 const chartData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
@@ -38,7 +35,7 @@ const chartOptions = {
 export default function Summary() {
     return (
         <>
-            <div className={cxHome("top-summary-view")}>
+            <div className={cx("top-summary-view")}>
                 <div className={cx("summary")}>
                     <SummaryCard
                         title="Deal Closed"
@@ -61,8 +58,8 @@ export default function Summary() {
                     />
                 </div>
             </div>
-            <div className={cxHome("chart-summary-view")}>
-                <div className={cxHome("chart")}>
+            <div className={cx("chart-summary-view")}>
+                <div className={cx("chart")}>
                     <Chart type="bar" data={chartData} options={chartOptions} />
                 </div>
             </div>
