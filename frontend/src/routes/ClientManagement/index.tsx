@@ -4,7 +4,7 @@ import { Fieldset } from "primereact/fieldset";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import CreateClientModal from "./CreateClientModal";
-import { CreateClientModalProps } from "../../types/CreateClientModalTypes";
+import { CreateClientModalProps } from "./CreateClientModalTypes";
 
 // Client Types
 const DIRECT = "Direct";

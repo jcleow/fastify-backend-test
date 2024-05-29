@@ -1,7 +1,7 @@
 import { Card } from "primereact/card";
-import styles from "../stylesheets/Summary.module.css";
+import styles from "./SummaryCard.module.css";
 import classNames from "classnames/bind";
-import "../stylesheets/primeReactStyles.ts";
+import "../../assets/primeReactStyles.ts";
 const cx = classNames.bind(styles);
 
 interface SummaryCardProps {

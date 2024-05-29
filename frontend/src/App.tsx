@@ -1,5 +1,5 @@
 import { PrimeReactProvider } from "primereact/api";
-import SideBar from "./components/SideBar";
+import SideBar from "./layout/SideBar/SideBar";
 import { Outlet } from "react-router-dom";
 import styles from "./stylesheets/App.module.css";
 import classNames from "classnames/bind";

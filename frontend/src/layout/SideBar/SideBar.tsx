@@ -1,8 +1,8 @@
 import { PanelMenu } from "primereact/panelmenu";
 import { useNavigate } from "react-router-dom";
-import styles from "../stylesheets/Sidebar.module.css";
 import classNames from "classnames/bind";
-import "../stylesheets/primeReactStyles.ts";
+import "../../assets/primeReactStyles.ts";
+import styles from "./Sidebar.module.css";
 
 const cx = classNames.bind(styles);
 
